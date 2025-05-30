@@ -1,0 +1,151 @@
+<head>
+    <title>Aleksey Selivanov</title>
+    <link rel="stylesheet" href="./typebase.css">
+    <style type="text/css">
+        a {
+            color: #000;
+        }
+        body {
+            max-width: 1024px;
+            margin: 0 auto;
+        }
+
+        .name {
+            gap: 0.25em;
+            img {
+                height: 1em;
+                border-radius: 1000px;
+            }
+        }
+
+        .icons {
+            margin-left: 1rem;
+            display: inline-flex;
+            flex-direction: row;
+            gap: 0.5rem;
+
+            img {
+                width: auto;
+                height: 1em;
+                filter: grayscale(0);
+            }
+        }
+        .muted {
+            opacity: 0.25;
+        }
+        .normal {
+            font-weight: normal;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2 class="name">
+        <span>Aleksey Selivanov</span>
+        <img src="userpic.jpg" />
+    </h2>
+
+    <p class="lead">Versatile creator with math background</p>
+
+    <p>
+        I began programming as a kid discovering Visual Basic 6.
+        At around 12 years old, I created and published a role-playing computer game (built using Delphin and written in Object Pascal 🤩).
+        It ranked in the Top 10 downloads for over a week.
+        A childhood dream come true!
+    </p>
+
+    <h3>Education</h3>
+
+    <h4>B.S. in Mathematics&mdash;Ural State University, 2005&ndash;2009</h4>
+    <p class="hug">Studied pure mathematics, physics, and computer science.</p>
+
+    <h4>M.S. in Computer Science&mdash;Ural State University,
+        2009&ndash;2011</h4>
+    <p class="hug">Deepen Computer Science knowledge.</p>
+
+    <h3>Experience</h3>
+
+    <h4>
+        Senior Full-stack Engineer <span class="muted normal">Part-time</span><br />
+        <a href="https://www.tymely.ai/" target="_blank">Tymely.ai</a>
+        
+    </h4>
+    <small>
+        Sep 2023–Present
+        <span class="icons">
+            <img src="icons/typescript.svg" title="TypeScript" />
+            <img src="icons/react.svg" title="React" />
+            <img src="icons/tanstack-query.svg" title="TanStack Query" />
+            <img src="icons/material-ui.svg" title="Material UI" />
+            <img src="icons/fastapi.svg" title="FastAPI" />
+            <img src="icons/postgresql.svg" title="PostgreSQL" />
+            <img src="icons/aws.svg" title="AWS" />
+        </span>
+    </small>
+
+    <p>Work as a core frontend dev in a small team to build the future of customer service with AI.</p>
+
+    <ul>
+        <li>Setup E2E pipeline using Playwright. <small>Docker, screenshot diff, run against prod.</small></li>
+        <li>Build custom tailored rich text editor using Lexical. <small>Sanitization, custom HTML blocks, Jinja support.</small></li>
+        <li>Rework graph editing tool based on React Flow. <small>Utilize virtualization and clustering to make 1000+ nodes graphs blazing fast.</small></li>
+    </ul>
+
+    <h4>
+        Senior Frontend Engineer <span class="muted normal">Part-time</span><br />
+        <a href="https://www.beeper.com/">Beeper</a>
+    </h4>
+    <small>
+        Dec 2020–Feb 2022
+        <div class="icons">
+            <img src="icons/typescript.svg" title="TypeScript" />
+            <img src="icons/react.svg" title="React" />
+            <img src="icons/flux.svg" title="Flux" />
+            <img src="icons/electron.svg" title="Electron" />
+        </div>
+    </small>
+
+    <p>
+        Silicon Valley startup from the creator of <a
+            href="https://repebble.com/">Pebble</a> smartwatches <a
+            href="https://x.com/ericmigi">Eric Migicovsky</a>!
+        Joined project at early stage with the team of 5 people.
+        Over more than a year I was solely building the desktop version working closely with the designer.
+    </p>
+    <p>The app was based on the open-source project <a href="https://element.io/">Element</a>. Tailor it to our needs working on things like:</p>
+    <ul>
+        <li>Track user inactivity and unread messages. <small>Consistent behavior for scroll to first unread, scroll to bottom (sticky).</small></li>
+        <li>Rework sidebar. <small>Clean look, pinnable favorites (similar to iMessage).</small></li>
+        <li>Beautiful native look & feel across platforms. <small>Native translucent background on macOS. Back then, this was non-trivial.</small></li>
+    </ul>
+
+    <h4 style="margin-bottom:0.5em">
+        Senior Full-stack Engineer<br />
+        <a href="https://upwork.com/">Upwork</a>
+    </h4>
+
+
+    <small>
+        Oct 2016–Oct 2024
+        
+        <div class="icons">
+            <img src="icons/symfony.svg" title="Symfony" />
+            <img src="icons/angularjs.svg" title="AngularJS" />
+            <img src="icons/vue.svg" title="Vue" />
+            <img src="icons/nuxt.svg" title="Nuxt" />
+            <img src="icons/graphql.svg" title="GraphQL" />
+        </div>
+    </small>
+
+    <p>
+        Long journey as a full-stack engineer in a large company.
+        Build multiple small-to-medium features, gain team leading experience.
+    </p>
+    <ul style="margin-top:0.5em">
+        <li>Build multiple small-to-medium features improving conversion.</li>
+        <li>Migrate from AngularJS to Vue & Nuxt.</li>
+        <li>Leading a team of 5 conducted a half-a-year migration from PHP & Symfony middle layer to GraphQL. <small>Schema design, resolvers implementation, frontend rework, testing, gradual release.</small></li>
+    </ul>
+
+</body>
