@@ -36,11 +36,27 @@
         .normal {
             font-weight: normal;
         }
+        .contact {
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            font-size: 0.8em;
+            a {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.25em;
+            }
+        }
     </style>
 </head>
 
 <body>
-
+    <header class="contact">
+        <a href="mailto:alexei@helloworld.software" target="_blank"><img src="icons/envelope-fill.svg" alt="alexei@helloworld.software" /> alexei@helloworld.software</a>
+        <a href="tg://resolve?domain=real_alexei" target="_blank"><img src="icons/telegram.svg" alt="@real_alexei" /> real_alexei</a>
+        <a href="https://github.com/real-alexei" target="_blank"><img src="icons/github.svg" alt="@real-alexei" /> real-alexei</a>
+    </header>
     <h2 class="name">
         <span>Aleksey Selivanov</span>
         <img src="userpic.jpg" />
