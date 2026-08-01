@@ -12,10 +12,12 @@
     }
 
     .name {
-      gap: 0.25em;
+      display: inline-flex;
+      gap: 0.5em;
+      align-items: center;
 
       img {
-        height: 1em;
+        height: 1.15em;
         border-radius: 1000px;
       }
     }
@@ -28,8 +30,8 @@
 
       img {
         width: auto;
-        height: 1em;
-        filter: grayscale(0);
+        height: 1.15em;
+        filter: grayscale(1);
       }
     }
 
@@ -39,6 +41,9 @@
 
     .normal {
       font-weight: normal;
+    }
+    .small {
+      font-size: small;
     }
 
     .contact {
@@ -59,8 +64,8 @@
 
 <body>
   <header class="contact">
-    <a href="mailto:alexei@helloworld.software" target="_blank"><img src="icons/envelope-fill.svg"
-        alt="alexei@helloworld.software" /> alexei@helloworld.software</a>
+    <a href="mailto:alexei.selivanov@gmail.com" target="_blank"><img src="icons/envelope-fill.svg"
+        alt="alexei@helloworld.software" /> alexei.selivanov@gmail.com</a>
     <a href="tg://resolve?domain=real_alexei" target="_blank"><img src="icons/telegram.svg" alt="@real_alexei" />
       real_alexei</a>
     <a href="https://github.com/real-alexei" target="_blank"><img src="icons/github.svg" alt="@real-alexei" />
@@ -82,8 +87,8 @@
   <h3>Experience</h3>
 
   <h4>
-    Senior Full-stack Engineer<br />
-    <a href="https://www.magad.app">Magad</a>
+    Senior Full-stack Engineer <span class="muted normal small">Full-time</span><br />
+    <a target="_blank" href="https://www.magad.app">Magad</a>
   </h4>
   <small>
     Oct 2025–Present
