@@ -109,21 +109,21 @@
   <p>
     B2B commerce and retail-operations platform for the wholesale electronics trade — an ERP-scale system covering
     product catalog, purchasing, warehouse, sales, finance, and market intelligence.
-    A TypeScript/Bun monorepo (~290K lines, 13 workspaces): a Next.js web app with 200+ routes over a 193-table
+    A TypeScript/Bun monorepo (~320K lines, 14 workspaces): a Next.js web app with 210+ routes over a 230-table
     PostgreSQL schema, two native iOS apps, and 8 independently deployed background workers.
-    Fully multilingual (4,600+ i18n keys).
+    Fully multilingual (5,000+ i18n keys).
+    #1 contributor (1,850+ commits, ~55% of the code) in a two-engineer team.
   </p>
 
   <ul>
     <li>
-      Built a complete warehouse management suite: scan-driven receiving, putaway planning with 7 placement strategies
-      against capacity-constrained storage, picking & packing, and pallet/box shipment assembly with weight stations.
+      Co-built the warehouse management suite: scan-driven receiving, picking & packing, and pallet/box shipment
+      assembly with weight stations against capacity-constrained storage.
       <small>Direct Zebra label printing from the browser via a hand-written ZPL generator.</small>
     </li>
     <li>
-      Implemented the full order-to-cash flow: purchase & sales order lifecycles with approval workflows and audit
-      log, generated commercial invoices and packing lists, and a multi-currency finance ledger.
-      <small>Transactionally safe payment recording; transactions are voided, never deleted.</small>
+      Owned the purchase-order lifecycle — approval workflows, audit log — and the document engine generating
+      commercial invoices and packing lists; co-built sales orders and finance.
     </li>
     <li>
       Launched a B2B wholesale storefront — a customer-facing iOS app plus back office — with dated, quantity-tiered
@@ -133,12 +133,12 @@
       Created AI document & vision pipelines: PDF invoices parsed into structured order lines (OCR + Gemini with
       attribute-constraint solving), warehouse photos resolved to SKUs via three barcode engines plus vision models,
       and an agentic taxonomy builder crawling brand sites and web archives.
-      <small>Vercel AI SDK orchestrating OpenAI and Gemini models.</small>
+      <small>Vercel AI SDK orchestrating OpenAI and Gemini models; crawling via Playwright through Bright Data
+        proxies.</small>
     </li>
     <li>
-      Built market-intelligence workers aggregating prices from Keepa/Amazon, ~80 Apple country storefronts, and
-      Japanese buyback sites. <small>Playwright scraping through Bright Data proxies; automated daily PDF reports over
-        email, Slack, and WhatsApp.</small>
+      Built market-intelligence workers aggregating prices from Keepa/Amazon and ~80 Apple country storefronts.
+      <small>Playwright scraping, automated brand & model matching, an LLM-tagged market-news feed.</small>
     </li>
     <li>
       Wrote a native Swift barcode scanner module (AVFoundation + Vision) for the warehouse iOS app.
