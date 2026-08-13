@@ -165,30 +165,48 @@
     </span>
   </small>
 
-  <p>Core frontend engineer in a small team building AI-powered customer support automation.</p>
+  <p>
+    AI-powered customer-support automation: an LLM engine resolving e-commerce support tickets end to end.
+    #1 contributor (~780 commits) to the React/TypeScript operations console — the human-in-the-loop workbench where
+    agents and analysts supervise the AI — with regular backend work in the Python policy engine.
+  </p>
 
   <ul>
+    <li>
+      Shipped the redesigned agent ticket-handling workspace and owned the "argument" review UX: approval flows,
+      source-text highlighting, bulk editing. <small>Arguments are LLM-extracted variables that the AI's policy
+        decisions branch on.</small>
+    </li>
+    <li>
+      Built the LLM experimentation suite letting analysts run prompt & argument experiments against production
+      tickets. <small>Model & temperature selection, live report polling, virtualized result grids.</small>
+    </li>
+    <li>
+      Built the real-time Live Resolutions dashboard full-stack — an animated feed of tickets the AI resolves
+      autonomously. <small>React frontend; FastAPI/SQLAlchemy aggregation queries over JSONB.</small>
+    </li>
     <li>
       Built a custom rich text editor on <a href="https://lexical.dev" target="_blank">Lexical</a>.
       <small>Supports a mix of partial HTML, Markdown & Jinja templates in a single document.</small>
     </li>
     <li>
-      Created real-time collaboration primitives — write/read locks and presence indicators — powered by AWS Amplify
-      PubSub.
+      Developed the graph-based no-code policy editor on React Flow — inline validation on nodes, path highlighting,
+      embedded template editing. <small>Virtualization and clustering made 1,000+ node graphs perform smoothly.</small>
     </li>
     <li>
-      Optimized a large React Flow graph for the analytics team.
-      <small>Virtualization and clustering made 1,000+ node graphs perform smoothly.</small>
+      Created real-time collaboration primitives — ticket write/read locks, presence indicators, cross-session sync —
+      powered by AWS Amplify PubSub.
     </li>
     <li>
-      Improved performance of complex Material React Table instances across multiple pages.
-      <small>Added virtualization and eliminated unnecessary re-renders.</small>
+      Owned the frontend platform: removed Nx and migrated the build from Webpack to Vite (435 files, net −55K lines),
+      then MUI v5→6, Amplify v5→6, and TanStack Query v4→5 with a full data-layer refactor.
+      <small>All landed without feature freezes.</small>
     </li>
-    <li>Set up an E2E testing pipeline with Playwright. <small>Screenshot diffs, Dockerized local runs, GitHub
-        Actions.</small></li>
-    <li>Simplified the monorepo setup by removing Nx; migrated the build from Webpack to Vite.</li>
-    <li>Implemented backend endpoints (FastAPI, SQLAlchemy, PostgreSQL) alongside frontend work.
-      <small>Designed a performant SQL query powering the sales dashboard.</small>
+    <li>Built the Playwright E2E pipeline from zero. <small>Automated Cognito OTP login, screenshot diffs, Dockerized
+        runs, per-PR GitHub Actions.</small></li>
+    <li>
+      Backend work in the AI policy engine: argument lifecycle, XSS-safe Jinja2 response templating, and ticketing
+      integrations (Zendesk, Salesforce, Five9). <small>FastAPI, SQLAlchemy, PostgreSQL, AWS Lambda + CDK.</small>
     </li>
   </ul>
 
