@@ -153,6 +153,55 @@
 
   <h4>
     Senior Full-stack Engineer <span class="muted normal">Part-time</span><br />
+    <a target="_blank" href="https://www.wealert.co.uk">WeAlert</a>
+  </h4>
+  <small>
+    Jul 2025–Jan 2026
+    <span class="icons">
+      <img src="icons/typescript.svg" title="TypeScript" />
+      <img src="icons/react.svg" title="React" />
+      <img src="icons/nextjs.svg" title="Next.js" />
+      <img src="icons/bun.svg" title="Bun" />
+      <img src="icons/prisma.svg" title="Prisma" />
+      <img src="icons/postgresql.svg" title="PostgreSQL" />
+      <img src="icons/stripe.svg" title="Stripe" />
+    </span>
+  </small>
+
+  <p>
+    SMS marketing SaaS for UK small businesses — contact lists, campaigns, branded opt-in pages, and subscription
+    billing on top of the ClickSend gateway.
+    A Next.js/TypeScript app with Prisma over PostgreSQL, deployed on Vercel.
+    #1 contributor (152 commits, ~86%) in a two-engineer team.
+  </p>
+
+  <ul>
+    <li>
+      Owned billing end to end on Stripe: subscriptions, 14-day trials, monthly-to-annual upgrades with proration,
+      cancellation with feedback capture, prepaid top-ups, and an orders & invoices view.
+      <small>Webhook-driven state sync; GBP/USD multi-currency pricing.</small>
+    </li>
+    <li>
+      Built the SMS campaign engine over ClickSend — scheduled sends, per-recipient delivery tracking, and pre-send
+      cost estimation with margin. <small>Usage metered against plan limits and trial quotas per billing period.</small>
+    </li>
+    <li>
+      Shipped public branded opt-in pages served from a subscribe.* subdomain, with logo upload, social
+      links, and consent capture straight into contact lists. <small>Middleware slug rewriting; UploadThing storage.</small>
+    </li>
+    <li>
+      Reworked the platform layer: migrated the database from MySQL to PostgreSQL, and moved auth to JWT sessions with
+      permission-node checks, rate limiting, and Zod-validated API handlers.
+    </li>
+    <li>
+      Added international support — country/currency configuration, geo-based region detection, and phone number
+      validation with a country selector. <small>Plus a self-serve analytics dashboard: sends, click-through, opt-out
+        rate, subscriber growth.</small>
+    </li>
+  </ul>
+
+  <h4>
+    Senior Full-stack Engineer <span class="muted normal">Part-time</span><br />
     <a href="https://www.tymely.ai/" target="_blank">Tymely.ai</a>
   </h4>
   <small>
