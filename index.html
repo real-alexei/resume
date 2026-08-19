@@ -321,6 +321,55 @@
         design, resolver implementation, frontend rework, testing, gradual release.</small></li>
   </ul>
 
+  <h3>Demo Projects</h3>
+
+  <h4>
+    <a target="_blank" href="https://github.com/real-alexei/ChainBid">ChainBid</a>
+  </h4>
+  <small>
+    Aug 2026 
+    <span class="icons">
+      <img src="icons/typescript.svg" title="TypeScript" />
+      <img src="icons/solidity.svg" title="Solidity" />
+      <img src="icons/react.svg" title="React" />
+      <img src="icons/nestjs.svg" title="NestJS" />
+      <img src="icons/graphql.svg" title="GraphQL" />
+      <img src="icons/kafka.svg" title="Kafka" />
+      <img src="icons/postgresql.svg" title="PostgreSQL" />
+      <img src="icons/redis.svg" title="Redis" />
+    </span>
+  </small>
+
+  <p>
+    NFT auction platform where bids are placed on-chain and the backend turns chain logs into read models.
+    Solidity contracts (ERC-721 + English auction) on Hardhat, a NestJS backend over PostgreSQL, Kafka, and Redis,
+    and a React SPA with wagmi wallet integration and sign-in-with-Ethereum (EIP-4361).
+  </p>
+
+  <ul>
+    <li>
+      Chain-indexing pipeline with 5-block confirmation depth and reorg detection — a (block number, hash) cursor
+      rewinds automatically on mismatch. <small>At-least-once delivery into Kafka with idempotent consumers; read
+        models fully reprojectable from chain logs.</small>
+    </li>
+    <li>
+      API-originated writes go through a transactional outbox: state and events commit atomically in Postgres before
+      relay to Kafka.
+    </li>
+    <li>
+      Read models exposed over REST, GraphQL with keyset pagination, and live WebSocket subscriptions.
+      <small>Redis caching invalidated by projections; Redis pub/sub fan-out for live auction updates.</small>
+    </li>
+    <li>
+      Types flow from the database to the UI: Kysely types generated from migrations, Zod event contracts enforced at
+      produce & consume time — schema drift becomes a compile error.
+    </li>
+    <li>
+      E2E suite covering the mint-to-settlement flow. <small>CI with linting, type checks & schema-drift detection;
+        Prometheus metrics including indexer-lag gauges.</small>
+    </li>
+  </ul>
+
   <h3>Education</h3>
 
   <h4>M.S. in Computer Science&mdash;Ural State University,
