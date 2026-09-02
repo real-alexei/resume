@@ -113,11 +113,11 @@
 
   <p>
     B2B commerce and retail-operations platform for the wholesale electronics trade — an ERP-scale system covering
-    product catalog, purchasing, warehouse, sales, finance, and market intelligence.
-    A TypeScript/Bun monorepo (~320K lines, 14 workspaces): a Next.js web app with 210+ routes over a 230-table
-    PostgreSQL schema, two native iOS apps, and 8 independently deployed background workers.
-    Fully multilingual (5,000+ i18n keys).
-    #1 contributor (1,850+ commits, ~55% of the code) in a two-engineer team.
+    product catalog, purchasing, warehouse, sales, finance, market intelligence, and AI analytics.
+    A TypeScript/Bun monorepo (~375K lines, 15 workspaces): a Next.js web app with 240+ routes over a 270-table
+    PostgreSQL schema, two native iOS apps, and 9 independently deployed background workers.
+    Fully multilingual (5,500+ i18n keys).
+    #1 contributor (2,000+ commits — two thirds of the history, about half of the code) in a two-engineer team.
   </p>
 
   <ul>
@@ -135,11 +135,21 @@
       price lists and offer/counter-offer price negotiation.
     </li>
     <li>
+      Built a text-to-SQL analyst agent for non-technical staff: a plain-language question becomes an approved, 
+      versioned dataset, optionally scheduled as a monitor with Slack alerts.
+      <small>Vercel AI SDK harness running the Pi coding agent over a sandbox with the app source mounted read-only,
+        so business rules come from code.</small>
+    </li>
+    <li>
+      Built an agentic taxonomy builder that crawls brand storefronts and web archives into a reviewable
+      brand → product → model → variant tree with attributes and part numbers, promoted into the catalog on approval.
+      <small>Full-page LLM evidence, multi-pass refinement and run-wide audit of staged rows, resumable jobs under a
+        worker lease, barcodes borrowed from Keepa, per-job LLM cost; Playwright through Bright Data proxies.</small>
+    </li>
+    <li>
       Created AI document & vision pipelines: PDF invoices parsed into structured order lines (OCR + Gemini with
-      attribute-constraint solving), warehouse photos resolved to SKUs via three barcode engines plus vision models,
-      and an agentic taxonomy builder crawling brand sites and web archives.
-      <small>Vercel AI SDK orchestrating OpenAI and Gemini models; crawling via Playwright through Bright Data
-        proxies.</small>
+      attribute-constraint solving) and warehouse photos resolved to SKUs via three barcode engines plus vision
+      models. <small>Vercel AI SDK orchestrating OpenAI and Gemini models.</small>
     </li>
     <li>
       Built market-intelligence workers aggregating prices from Keepa/Amazon and ~80 Apple country storefronts.
