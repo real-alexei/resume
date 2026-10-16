@@ -114,10 +114,10 @@
   <p>
     B2B commerce and retail-operations platform for the wholesale electronics trade — an ERP-scale system covering
     product catalog, purchasing, warehouse, sales, finance, market intelligence, and AI analytics.
-    A TypeScript/Bun monorepo (~375K lines, 15 workspaces): a Next.js web app with 240+ routes over a 270-table
-    PostgreSQL schema, two native iOS apps, and 9 independently deployed background workers.
-    Fully multilingual (5,500+ i18n keys).
-    #1 contributor (2,000+ commits — two thirds of the history, about half of the code) in a two-engineer team.
+    A TypeScript/Bun monorepo (~550K lines, 22 workspaces): a Next.js web app with 290+ routes over a 360-table
+    PostgreSQL schema, two native iOS apps, and 15 independently deployed background services.
+    Fully multilingual (9,700+ i18n keys).
+    #1 contributor (2,400+ commits, 60% of the history) in a two-engineer team.
   </p>
 
   <ul>
@@ -133,10 +133,18 @@
     <li>
       Launched a B2B wholesale storefront — a <a href="magad-store/">customer-facing iOS app</a> plus back office — with dated, quantity-tiered
       price lists and offer/counter-offer price negotiation.
+      <small>Push notifications through an outbox worker; a 17-flow end-to-end walk on the simulator, reported as a
+        screenshot storyboard.</small>
     </li>
     <li>
-      Built a text-to-SQL analyst agent for non-technical staff: a plain-language question becomes an approved, 
-      versioned dataset, optionally scheduled as a monitor with Slack alerts.
+      Built crypto receipts for finance: incoming USDT (TRC-20) to branch wallets is booked as pending money-in,
+      senders are AML-screened against the Tether blacklist and Chainalysis sanctions, alerts go out via Slack and a
+      Telegram bot. <small>Look-alike tokens and zero-value address-poisoning transfers ignored; senders re-screened
+        on a schedule.</small>
+    </li>
+    <li>
+      Built a text-to-SQL analyst agent for non-technical staff: a plain-language question becomes an approved,
+      versioned dataset, optionally a monitor posting new rows to Slack on a schedule or on table writes.
       <small>Vercel AI SDK harness running the Pi coding agent over a sandbox with the app source mounted read-only,
         so business rules come from code.</small>
     </li>
@@ -152,12 +160,28 @@
       models. <small>Vercel AI SDK orchestrating OpenAI and Gemini models.</small>
     </li>
     <li>
-      Built market-intelligence workers aggregating prices from Keepa/Amazon and ~80 Apple country storefronts.
-      <small>Playwright scraping, automated brand & model matching, an LLM-tagged market-news feed.</small>
+      Built market-intelligence workers aggregating prices from Keepa/Amazon, Best Buy, Walmart, B&H and ~80 Apple
+      country storefronts, plus Apple Store delivery times by part.
+      <small>Playwright scraping through Bright Data Unlocker, automated brand & model matching with a cross-source
+        barcode check per variant, an LLM-tagged market-news feed.</small>
     </li>
     <li>
-      Wrote a native Swift barcode scanner module (AVFoundation + Vision) for the warehouse iOS app.
-      <small>OCR consensus voting, region-of-interest gating, adaptive frame throttling, low-light detection.</small>
+      Owned the warehouse iOS app since it joined the monorepo: redesign, truck & warehouse sorting stations,
+      counterfeit Apple box detection, and a native Swift barcode scanner module (AVFoundation + Vision).
+      <small>OCR consensus voting, region-of-interest gating, adaptive frame throttling, low-light detection;
+        a 14-flow simulator walk with a simulated camera.</small>
+    </li>
+    <li>
+      Wrote a bounded model checker in Lean 4 and modelled 16 core workflows — PO receiving, finance & payroll,
+      inter-branch transfers, the cost pool, storefront cart & push, agent jobs — exploring every interleaving of
+      concurrent requests, half-applied writes and stale pages against domain invariants.
+      <small>50+ issues filed from minimized repro traces, fixes pinned as regression tests; plus a Stryker
+        mutation-testing pilot (storefront mutation score 72% → 95%).</small>
+    </li>
+    <li>
+      Ran codebase-wide security audits and drove the fixes: every server action authorized and branch-scoped,
+      enforced by a CI checker; account-takeover and cross-branch write paths closed; revocable sessions, OTP limits,
+      XSS, webhook and header hardening.
     </li>
   </ul>
 
