@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Restack, a native iOS and Android app for vocabulary and spelling practice. Selected screens from automated UI tests.">
+  <title>Restack — Alexei Selivanov</title>
+  <link rel="stylesheet" href="../typebase.css">
+  <style>
+    a { color: #000; }
+    body { max-width: 1024px; margin: 0 auto; padding: 0 1rem 3rem; }
+    .back { display: block; padding: 1rem 0; font-size: 0.8em; }
+    h1 { font-size: 2.828rem; line-height: 3rem; margin-top: 0; }
+    h2 { font-size: 1.414rem; line-height: 1.5rem; margin-top: 2rem; }
+    .muted { color: #666; font-size: 0.8em; }
+    .screens { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(210px, 100%), 1fr)); gap: 1.5rem 1rem; margin-top: 1.5rem; }
+    figure { margin: 0; min-width: 0; }
+    figure a { display: block; border-radius: 20px; }
+    figure a:focus-visible { outline: 2px solid #000; outline-offset: 4px; }
+    img { display: block; width: 100%; height: auto; border: 1px solid #e5e5e5; border-radius: 20px; box-sizing: border-box; }
+    figcaption { margin-top: 0.5rem; font-size: 0.7em; line-height: 1.4; }
+    figcaption span { color: #666; }
+  </style>
+</head>
+
+<body>
+  <a class="back" href="../">← Alexei Selivanov</a>
+  <main>
+    <h1>Restack</h1>
+    <p>Native iOS and Android app for vocabulary and spelling practice. Create cards from words, pictures, or text shared
+      from another app; learn with spaced repetition; share collections and follow learners’ progress.</p>
+    <p class="muted">SwiftUI &amp; SwiftData · Kotlin &amp; Jetpack Compose · Go &amp; PostgreSQL</p>
+    <p class="muted">Selected storyboard screens from automated UI tests with demo accounts. Open any image at full size.</p>
+
+    <section aria-labelledby="ios">
+      <h2 id="ios">iOS</h2>
+      <div class="screens">
+        <figure>
+          <a href="screenshots/ios-deck.png" target="_blank" rel="noopener">
+            <img src="screenshots/ios-deck.png" width="1206" height="2622" alt="iOS vocabulary deck with words to review, a learned pile, and the Learn button">
+          </a>
+          <figcaption><b>A deck of words</b><br><span>Cards to review, progress marks, and a folded pile of learned words.</span></figcaption>
+        </figure>
+        <figure>
+          <a href="screenshots/ios-create-card.png" target="_blank" rel="noopener">
+            <img src="screenshots/ios-create-card.png" width="1206" height="2622" alt="Creating a card for void, with pronunciation, selectable meanings, synonyms, and bilingual examples" loading="lazy">
+          </a>
+          <figcaption><b>Find or create</b><br><span>One field searches the deck and drafts new cards, with meanings and examples to choose from.</span></figcaption>
+        </figure>
+        <figure>
+          <a href="screenshots/ios-lesson.png" target="_blank" rel="noopener">
+            <img src="screenshots/ios-lesson.png" width="1206" height="2622" alt="An iOS lesson asking for the English word missing from a sentence, with a Russian prompt above" loading="lazy">
+          </a>
+          <figcaption><b>Recall in context</b><br><span>Type the missing word in an example sentence. Each answer updates the review schedule.</span></figcaption>
+        </figure>
+        <figure>
+          <a href="screenshots/ios-share-extension.png" target="_blank" rel="noopener">
+            <img src="screenshots/ios-share-extension.png" width="1206" height="2622" alt="The iOS share extension recognizing called it off as call off and selecting its meaning from the sentence" loading="lazy">
+          </a>
+          <figcaption><b>From reading to learning</b><br><span>Share a sentence, tap a word or phrasal verb, and save the meaning it has in context.</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section aria-labelledby="android">
+      <h2 id="android">Android</h2>
+      <div class="screens">
+        <figure>
+          <a href="screenshots/android-picture-cards.png" target="_blank" rel="noopener">
+            <img src="screenshots/android-picture-cards.png" width="1080" height="2400" alt="An Android spelling collection with picture cards of a house and a cat, including audio playback" loading="lazy">
+          </a>
+          <figcaption><b>Pictures and pronunciation</b><br><span>Picture and spoken-word prompts for spelling practice, including parent-led learning.</span></figcaption>
+        </figure>
+        <figure>
+          <a href="screenshots/android-second-try.png" target="_blank" rel="noopener">
+            <img src="screenshots/android-second-try.png" width="1080" height="2400" alt="An Android lesson giving a second try because emptiness is right in meaning but a different word is being practiced" loading="lazy">
+          </a>
+          <figcaption><b>A second try</b><br><span>A valid synonym earns a hint and another attempt without revealing the word being practiced.</span></figcaption>
+        </figure>
+        <figure>
+          <a href="screenshots/android-class-progress.png" target="_blank" rel="noopener">
+            <img src="screenshots/android-class-progress.png" width="1080" height="2400" alt="A class collection on Android with learner avatars and the hardest words grouped at the top" loading="lazy">
+          </a>
+          <figcaption><b>What needs attention</b><br><span>Teachers see the hardest words for a class and can focus on an individual learner.</span></figcaption>
+        </figure>
+        <figure>
+          <a href="screenshots/android-learners.png" target="_blank" rel="noopener">
+            <img src="screenshots/android-learners.png" width="1080" height="2400" alt="The Android learners sheet showing last study activity, due cards, and pending invitations" loading="lazy">
+          </a>
+          <figcaption><b>Shared cards, personal progress</b><br><span>Invite learners and follow their activity. Each learner keeps a separate review schedule.</span></figcaption>
+        </figure>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>
