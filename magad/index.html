@@ -15,6 +15,10 @@
     img { display: block; width: auto; height: auto; max-width: 100%; max-height: 300px; border: 1px solid #e5e5e5; box-sizing: border-box; }
     .screens img { width: 400px; }
     figcaption { margin-top: 0.5rem; font-size: 0.7em; line-height: 1.35; }
+    .ask-data-screens { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr)); }
+    .ask-data-screens .featured { grid-column: 1 / -1; }
+    .ask-data-screens a { display: block; }
+    .ask-data-screens img { width: 100%; max-height: none; }
     .mobile img { width: 138px; }
     .muted { color: #737373; font-size: 0.8em; }
   </style>
@@ -24,7 +28,32 @@
   <a class="back" href="../">Back</a>
   <h2 class="hug">Magad</h2>
   <p>B2B commerce and retail operations — back office, warehouse, and native mobile apps.</p>
-  <p>Screenshots from end-to-end tests with demo data.</p>
+  <p>Screenshots use demo data.</p>
+
+  <section aria-labelledby="ask-data">
+    <h3 id="ask-data">Ask Data</h3>
+    <p>Ask Data uses a semantic layer grounded in Magad’s business logic and glossary to translate plain-language questions into SQL. Users can review the query and sample rows before saving a report with scheduled checks.</p>
+    <div class="screens ask-data-screens">
+      <figure class="featured">
+        <a href="screenshots/ask-data-report.jpg" target="_blank" rel="noopener">
+          <img src="screenshots/ask-data-report.jpg" width="1440" height="900" alt="Saved report showing five overdue purchase orders in Dubai and a weekday monitor for new overdue orders">
+        </a>
+        <figcaption><strong>Saved report.</strong> Refresh the list on demand or use the weekday monitor to flag newly overdue orders.</figcaption>
+      </figure>
+      <figure>
+        <a href="screenshots/ask-data-clarification.jpg" target="_blank" rel="noopener">
+          <img src="screenshots/ask-data-clarification.jpg" width="1440" height="900" alt="Ask Data asks whether to measure delays from the planned delivery date or the order date" loading="lazy">
+        </a>
+        <figcaption><strong>Clarify the question.</strong> Choose how to define an overdue order before running the query.</figcaption>
+      </figure>
+      <figure>
+        <a href="screenshots/ask-data-query-preview.jpg" target="_blank" rel="noopener">
+          <img src="screenshots/ask-data-query-preview.jpg" width="1440" height="900" alt="Query review showing the filters, expanded SQL, sample purchase orders, and approval controls" loading="lazy">
+        </a>
+        <figcaption><strong>Review the query.</strong> Check the filters, SQL, and sample rows before approving the result.</figcaption>
+      </figure>
+    </div>
+  </section>
 
   <h3>Back office</h3>
   <p class="muted">Some of 138 screens captured in E2E tests.</p>
