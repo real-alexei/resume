@@ -14,6 +14,7 @@
     body {
       max-width: 1024px;
       margin: 0 auto;
+      padding: 0 1rem 3rem;
     }
 
     .name {
@@ -31,7 +32,9 @@
       margin-left: 1rem;
       display: inline-flex;
       flex-direction: row;
+      flex-wrap: wrap;
       gap: 0.5rem;
+      vertical-align: middle;
 
       img {
         width: auto;
@@ -54,14 +57,38 @@
     .contact {
       padding: 1rem;
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
-      gap: 1rem;
+      gap: 0.5rem 1rem;
       font-size: 0.8em;
 
       a {
         display: inline-flex;
         align-items: center;
         gap: 0.25em;
+      }
+    }
+
+    @media print {
+      html {
+        font-size: 100%;
+      }
+
+      body {
+        max-width: none;
+        padding: 0;
+      }
+
+      h2,
+      h3,
+      h4 {
+        break-after: avoid;
+        page-break-after: avoid;
+      }
+
+      li {
+        break-inside: avoid;
+        page-break-inside: avoid;
       }
     }
   </style>
@@ -81,18 +108,19 @@
     <img src="userpic.jpg" alt="" />
   </h2>
 
-  <p class="lead">Senior full-stack engineer with a decade of experience and a background in mathematics</p>
+  <p class="lead">Senior product engineer with a decade of full-stack experience and a background in mathematics</p>
 
   <p>
-    Build products end to end — database schema, backend services, complex web UIs, and native mobile apps.
+    I own products end to end — from PostgreSQL schemas, financial ledgers, and AI agents to dense web interfaces,
+    native mobile apps, and formal proofs in Lean 4.
     My path runs from eight years at Upwork, through early-stage startups (<a target="_blank" href="https://www.beeper.com">Beeper</a> in Silicon Valley, <a target="_blank" href="https://www.tymely.ai/">Tymely</a> in Tel Aviv), to
-    architecting an ERP-scale B2B commerce platform from its first commit.
+    building an ERP-scale B2B commerce and finance platform from its first commit.
   </p>
 
   <h3>Experience</h3>
 
   <h4>
-    Senior Full-stack Engineer <span class="muted normal">Full-time</span><br />
+    Senior Product Engineer <span class="muted normal">Full-time</span><br />
     <a target="_blank" href="https://www.magad.app">Magad</a>
   </h4>
   <small>
@@ -108,86 +136,92 @@
       <img src="icons/postgresql.svg" title="PostgreSQL" />
       <img src="icons/expo.svg" title="Expo / React Native" />
       <img src="icons/swift.svg" title="Swift" />
+      <img src="icons/android.svg" title="Android" />
     </span>
   </small>
 
   <p>
-    B2B commerce and retail-operations platform for the wholesale electronics trade — an ERP-scale system covering
-    product catalog, purchasing, warehouse, sales, finance, market intelligence, and AI analytics.
-    A TypeScript/Bun monorepo (~550K lines, 22 workspaces): a Next.js web app with 290+ routes over a 360-table
-    PostgreSQL schema, two native iOS apps, and 15 independently deployed background services.
-    <a href="magad/">Project screenshots</a>.
-    Fully multilingual (9,700+ i18n keys).
-    #1 contributor (2,400+ commits, 60% of the history) in a two-engineer team.
+    B2B commerce and operations platform for the wholesale electronics trade — an ERP-scale system spanning catalog,
+    purchasing, warehouse, multi-channel sales, finance, market intelligence, and AI analytics.
+    Built in a TypeScript/Bun monorepo (~665K LOC, 26 workspaces): a Next.js back office (360+ routes) over a
+    420-table PostgreSQL schema, a web storefront, native iOS &amp; Android apps, a Telegram bot, and 19 independently
+    deployed background services.
+    Fully localized (13,100+ i18n keys) and documented in 135+ ADRs.
+    #1 contributor (2,600+ commits, over half of git history).
+    <a href="magad/">Project screenshots →</a>
   </p>
 
   <ul>
     <li>
-      Co-built the warehouse management suite: scan-driven receiving, picking & packing, and pallet/box shipment
-      assembly with weight stations against capacity-constrained storage.
-      <small>Direct Zebra label printing from the browser via a hand-written ZPL generator.</small>
+      Formally verified core domain logic in Lean 4: proved 350+ theorems across 10 modules (pricing ladders, stock
+      allocation, money rounding &amp; margins, purchase limits, trading schedules, cutover state machine),
+      differential-tested against TypeScript and PostgreSQL, and built a bounded model checker exploring 16 concurrent
+      workflows.
+      <small>Zero <code>sorry</code>s; caught production float-rounding and scheduling edge cases, filed 50+ concurrency
+        bugs from minimized traces (pinned as regression tests), and drove storefront mutation score from 72% to 95%
+        with Stryker.</small>
     </li>
     <li>
-      Owned the purchase-order lifecycle — approval workflows, audit log — and the document engine generating
-      commercial invoices and packing lists; co-built sales orders and finance.
+      Shipped <a href="magad/#ask-data">Ask Data</a>, a text-to-SQL analyst agent for non-technical staff:
+      plain-language questions compile into reviewed, versioned datasets that can run as monitors alerting Slack on a
+      schedule or on table writes.
+      <small>Vercel AI SDK harness running the Pi coding agent in a sandbox with the app source mounted read-only,
+        grounding SQL in real business logic rather than prompt summaries.</small>
     </li>
     <li>
-      Launched a B2B wholesale storefront — a <a href="magad/">customer-facing iOS app</a> plus back office — with dated, quantity-tiered
-      price lists and offer/counter-offer price negotiation.
-      <small>Push notifications through an outbox worker; a 17-flow end-to-end walk on the simulator, reported as a
-        screenshot storyboard.</small>
+      Designed an agentic taxonomy builder that crawls brand storefronts and web archives into a staged
+      brand → product → model → variant tree with specs and part numbers, promoted to the live catalog on approval.
+      <small>Full-page LLM evidence extraction, multi-pass refinement and run-wide audits, lease-based resumable jobs
+        with per-run cost tracking, Keepa barcode enrichment, and Playwright scraping via Bright Data.</small>
     </li>
     <li>
-      Built crypto receipts for finance: incoming USDT (TRC-20) to branch wallets is booked as pending money-in,
-      senders are AML-screened against the Tether blacklist and Chainalysis sanctions, alerts go out via Slack and a
-      Telegram bot. <small>Look-alike tokens and zero-value address-poisoning transfers ignored; senders re-screened
-        on a schedule.</small>
+      Built AI document and vision pipelines: supplier PDF invoices parsed into structured order lines (OCR + Gemini
+      with attribute-constraint solving), and warehouse box photos matched to SKUs across three barcode engines and
+      vision LLMs. <small>Orchestrated across OpenAI and Gemini via Vercel AI SDK.</small>
     </li>
     <li>
-      Built a text-to-SQL analyst agent for non-technical staff: a plain-language question becomes an approved,
-      versioned dataset, optionally a monitor posting new rows to Slack on a schedule or on table writes.
-      <small>Vercel AI SDK harness running the Pi coding agent over a sandbox with the app source mounted read-only,
-        so business rules come from code.</small>
+      Engineered TRON (USDT TRC-20) treasury workflows: on-chain deposits auto-booked as pending receipts, outgoing
+      payouts grouped and reconciled, wallets managed via Telegram bot, and counterparties AML-screened against the
+      Tether blacklist and Chainalysis sanctions with Slack/Telegram alerts.
+      <small>Filters out spoofed tokens and zero-value address-poisoning transfers; books opening balances and dust;
+        re-screens historical senders on a schedule.</small>
     </li>
     <li>
-      Built an agentic taxonomy builder that crawls brand storefronts and web archives into a reviewable
-      brand → product → model → variant tree with attributes and part numbers, promoted into the catalog on approval.
-      <small>Full-page LLM evidence, multi-pass refinement and run-wide audit of staged rows, resumable jobs under a
-        worker lease, barcodes borrowed from Keepa, per-job LLM cost; Playwright through Bright Data proxies.</small>
+      Launched the multi-channel B2B storefront — <a href="magad/">native iOS &amp; Android apps</a>, web app, Telegram
+      bot, and back-office console — featuring effective-dated tiered pricing, trading shifts, multi-store reseller
+      cascades, and live offer/counter-offer negotiation.
+      <small>Transactional outbox for APNs, Firebase, and Telegram delivery; 21-flow E2E suite running against a real
+        Postgres stand on both iOS simulator and Android emulator, published as screenshot storyboards.</small>
     </li>
     <li>
-      Created AI document & vision pipelines: PDF invoices parsed into structured order lines (OCR + Gemini with
-      attribute-constraint solving) and warehouse photos resolved to SKUs via three barcode engines plus vision
-      models. <small>Vercel AI SDK orchestrating OpenAI and Gemini models.</small>
+      Developed market-intelligence pipelines aggregating retail and wholesale offers across Keepa/Amazon, Best Buy,
+      Walmart, B&amp;H, ~80 regional Apple storefronts (including lead times by part number), and Telegram/WhatsApp
+      dealer groups.
+      <small>Playwright via Bright Data Unlocker, cross-source barcode verification, LLM normalization of free-text
+        dealer price lists, and an LLM-tagged market-news feed.</small>
     </li>
     <li>
-      Built market-intelligence workers aggregating prices from Keepa/Amazon, Best Buy, Walmart, B&H and ~80 Apple
-      country storefronts, plus Apple Store delivery times by part.
-      <small>Playwright scraping through Bright Data Unlocker, automated brand & model matching with a cross-source
-        barcode check per variant, an LLM-tagged market-news feed.</small>
+      Owned the purchase-order lifecycle and trade-document engine (commercial invoices, packing lists, approvals,
+      audit trail), and co-built sales orders, multi-currency accounting, and scan-driven warehouse fulfillment from
+      receiving to weighed pallet assembly.
+      <small>Direct browser-to-printer Zebra label output via a custom ZPL generator.</small>
     </li>
     <li>
-      Owned the warehouse iOS app since it joined the monorepo: redesign, truck & warehouse sorting stations,
-      counterfeit Apple box detection, and a native Swift barcode scanner module (AVFoundation + Vision).
-      <small>OCR consensus voting, region-of-interest gating, adaptive frame throttling, low-light detection;
-        a 14-flow simulator walk with a simulated camera.</small>
+      Led the warehouse iOS app: full UX redesign, inbound truck &amp; bin sorting stations, receiving photo QA (QR
+      routing and blur detection), counterfeit Apple box checks, and a native Swift barcode/OCR scanner built on
+      AVFoundation and Vision.
+      <small>Frame-level OCR consensus voting, ROI gating, adaptive throttling, low-light detection, and a 14-flow
+        simulator E2E walk with a virtual camera feed.</small>
     </li>
     <li>
-      Wrote a bounded model checker in Lean 4 and modelled 16 core workflows — PO receiving, finance & payroll,
-      inter-branch transfers, the cost pool, storefront cart & push, agent jobs — exploring every interleaving of
-      concurrent requests, half-applied writes and stale pages against domain invariants.
-      <small>50+ issues filed from minimized repro traces, fixes pinned as regression tests; plus a Stryker
-        mutation-testing pilot (storefront mutation score 72% → 95%).</small>
-    </li>
-    <li>
-      Ran codebase-wide security audits and drove the fixes: every server action authorized and branch-scoped,
-      enforced by a CI checker; account-takeover and cross-branch write paths closed; revocable sessions, OTP limits,
-      XSS, webhook and header hardening.
+      Hardened platform security and PostgreSQL performance: enforced per-endpoint authorization and branch scoping
+      across all server actions via CI, closed account-takeover and cross-branch write paths, added session revocation
+      and OTP rate limits, and tuned hot inventory/shelf queries with partial indexes.
     </li>
   </ul>
 
   <h4>
-    Senior Full-stack Engineer <span class="muted normal">Part-time</span><br />
+    Senior Full-Stack Engineer <span class="muted normal">Part-time</span><br />
     <a href="https://www.tymely.ai/" target="_blank">Tymely.ai</a>
   </h4>
   <small>
@@ -205,47 +239,50 @@
   </small>
 
   <p>
-    AI-powered customer-support automation: an LLM engine resolving e-commerce support tickets end to end.
-    #1 contributor (~780 commits) to the React/TypeScript operations console — the human-in-the-loop workbench where
-    agents and analysts supervise the AI — with regular backend work in the Python policy engine.
+    AI customer-support platform whose LLM engine resolves e-commerce tickets end to end.
+    #1 contributor (~780 commits) to the React/TypeScript operations console — the human-in-the-loop workbench for
+    supervising, testing, and tuning the AI — alongside regular backend work in the Python policy engine.
   </p>
 
   <ul>
     <li>
-      Shipped the redesigned agent ticket-handling workspace and owned the "argument" review UX: approval flows,
-      source-text highlighting, bulk editing. <small>Arguments are LLM-extracted variables that the AI's policy
-        decisions branch on.</small>
+      Shipped the redesigned ticket-handling workspace and owned the "argument" review UX: approval flows,
+      source-text highlighting, and bulk editing. <small>Arguments are LLM-extracted variables that policy decisions
+        branch on.</small>
     </li>
     <li>
-      Built the LLM experimentation suite letting analysts run prompt & argument experiments against production
-      tickets. <small>Model & temperature selection, live report polling, virtualized result grids.</small>
+      Designed the LLM experimentation suite for running prompt and extraction trials against production tickets.
+      <small>Model &amp; temperature controls, live report polling, virtualized result grids.</small>
     </li>
     <li>
-      Built the real-time Live Resolutions dashboard full-stack — an animated feed of tickets the AI resolves
-      autonomously. <small>React frontend; FastAPI/SQLAlchemy aggregation queries over JSONB.</small>
+      Built the Live Resolutions dashboard end to end — a real-time animated feed of tickets resolved autonomously by
+      the AI. <small>React frontend backed by FastAPI/SQLAlchemy aggregation queries over JSONB.</small>
     </li>
     <li>
-      Built a custom rich text editor on <a href="https://lexical.dev" target="_blank">Lexical</a>.
-      <small>Supports a mix of partial HTML, Markdown & Jinja templates in a single document.</small>
+      Engineered a custom rich-text template editor on <a href="https://lexical.dev" target="_blank">Lexical</a>.
+      <small>Handles mixed HTML fragments, Markdown, and Jinja2 templates within a single document.</small>
     </li>
     <li>
-      Developed the graph-based no-code policy editor on React Flow — inline validation on nodes, path highlighting,
-      embedded template editing. <small>Virtualization and clustering made 1,000+ node graphs perform smoothly.</small>
+      Developed a React Flow no-code policy graph editor with inline node validation, execution-path highlighting, and
+      embedded template editing. <small>Graph virtualization and clustering kept 1,000+ node policies performing
+        smoothly.</small>
     </li>
     <li>
-      Created real-time collaboration primitives — ticket write/read locks, presence indicators, cross-session sync —
-      powered by AWS Amplify PubSub.
+      Implemented real-time collaboration — ticket read/write locks, live presence, and cross-session sync — over AWS
+      Amplify PubSub.
     </li>
     <li>
-      Owned the frontend platform: removed Nx and migrated the build from Webpack to Vite (435 files, net −55K lines),
-      then MUI v5→6, Amplify v5→6, and TanStack Query v4→5 with a full data-layer refactor.
-      <small>All landed without feature freezes.</small>
+      Owned frontend infrastructure: removed Nx and migrated builds from Webpack to Vite (435 files, −55K LOC), then
+      upgraded MUI v5→6, Amplify v5→6, and TanStack Query v4→5 with a full data-layer refactor.
+      <small>All landed incrementally without feature freezes.</small>
     </li>
-    <li>Built the Playwright E2E pipeline from zero. <small>Automated Cognito OTP login, screenshot diffs, Dockerized
-        runs, per-PR GitHub Actions.</small></li>
     <li>
-      Backend work in the AI policy engine: argument lifecycle, XSS-safe Jinja2 response templating, and ticketing
-      integrations (Zendesk, Salesforce, Five9). <small>FastAPI, SQLAlchemy, PostgreSQL, AWS Lambda + CDK.</small>
+      Stood up the Playwright E2E pipeline from zero. <small>Automated Cognito OTP login, visual diffs, Dockerized
+        runners, per-PR GitHub Actions.</small>
+    </li>
+    <li>
+      Contributed to the Python policy engine: argument lifecycle, XSS-safe Jinja2 response templating, and helpdesk
+      integrations (Zendesk, Salesforce, Five9). <small>FastAPI, SQLAlchemy, PostgreSQL, AWS Lambda &amp; CDK.</small>
     </li>
   </ul>
 
@@ -264,24 +301,25 @@
   </small>
 
   <p>
-    Universal chat app unifying iMessage, WhatsApp, and a dozen other networks in a single client — a Silicon Valley
-    startup by <a href="https://x.com/ericmigi" target="_blank">Eric Migicovsky</a>, creator of
-    <a href="https://repebble.com/" target="_blank">Pebble</a> smartwatches.
-    Joined at an early stage as one of two engineers on a 5-person team and for over a year solely owned the Electron
-    desktop app, working closely with the designer.
+    Universal chat client unifying iMessage, WhatsApp, and a dozen other networks — a Silicon Valley startup by
+    <a href="https://x.com/ericmigi" target="_blank">Eric Migicovsky</a>, creator of
+    <a href="https://repebble.com/" target="_blank">Pebble</a> (later acquired by Automattic).
+    Joined as one of two engineers on a five-person team and solely owned the Electron desktop app for over a year,
+    partnering closely with the designer.
   </p>
-  <p>The app was based on the open-source <a href="https://element.io/" target="_blank">Element</a> Matrix client,
-    which I tailored to our needs:</p>
+  <p>Tailored the open-source <a href="https://element.io/" target="_blank">Element</a> Matrix client into a
+    consumer-grade desktop app:</p>
   <ul>
-    <li>Implemented user inactivity and unread message tracking. <small>Consistent behavior for scroll to first unread
-        and sticky scroll to bottom.</small></li>
-    <li>Reworked the sidebar. <small>Clean look with pinnable favorites, similar to iMessage.</small></li>
-    <li>Delivered a native look & feel across platforms. <small>Including a native translucent background on macOS —
-        non-trivial at the time.</small></li>
+    <li>Rebuilt unread-state and user-inactivity tracking. <small>Reliable jump-to-first-unread and sticky scroll to
+        bottom across rooms.</small></li>
+    <li>Redesigned the conversation sidebar. <small>Clean layout with pinnable favorites modeled after iMessage.</small>
+    </li>
+    <li>Delivered native desktop polish across macOS, Windows, and Linux. <small>Including translucent macOS vibrancy
+        window chrome — non-trivial in Electron at the time.</small></li>
   </ul>
 
   <h4>
-    Senior Full-stack Engineer <span class="muted normal">Full-time</span><br />
+    Senior Full-Stack Engineer <span class="muted normal">Full-time</span><br />
     <a href="https://upwork.com/" target="_blank">Upwork</a>
   </h4>
   <small>
@@ -296,15 +334,15 @@
   </small>
 
   <p>
-    Eight years as a full-stack engineer at the world's largest freelance marketplace, growing from feature work to
-    leading migrations of core infrastructure.
+    Eight years as a full-stack engineer at the world's largest freelance marketplace, growing from product feature
+    delivery to leading core architecture migrations.
   </p>
   <ul>
-    <li>Shipped conversion-focused product features across the marketplace.</li>
-    <li>Migrated legacy AngularJS pages to Vue & Nuxt. <small>Vuex store architecture with request-deduplicating action decorators,
-        several page sections, responsive layout.</small></li>
-    <li>Led a team of 5 through a six-month migration of the PHP & Symfony middle layer to GraphQL. <small>Schema
-        design, resolver implementation, frontend rework, testing, gradual release.</small></li>
+    <li>Shipped conversion-critical features across high-traffic marketplace flows.</li>
+    <li>Migrated legacy AngularJS flows to Vue &amp; Nuxt. <small>Designed the Vuex store architecture with
+        request-deduplicating action decorators and responsive layouts.</small></li>
+    <li>Led a 5-engineer team through a six-month migration of the PHP/Symfony middle tier to GraphQL. <small>Owned
+        schema design, resolvers, frontend cutover, testing, and staged rollout.</small></li>
   </ul>
 
   <h3>Personal Projects</h3>
@@ -314,7 +352,7 @@
     Native iOS and Android app for vocabulary and spelling practice: spaced repetition, context-aware dictionary
     lookups, picture and voice cards, and shared collections with individual learner progress.
     SwiftUI &amp; SwiftData, Kotlin &amp; Jetpack Compose, Go &amp; PostgreSQL.
-    <a href="restack/">Project screenshots</a>.
+    <a href="restack/">Project screenshots →</a>
   </p>
 
   <h3>Demo Projects</h3>
@@ -323,7 +361,7 @@
     <a target="_blank" href="https://github.com/real-alexei/ChainBid">ChainBid</a>
   </h4>
   <small>
-    Aug 2026 
+    Aug 2026
     <span class="icons">
       <img src="icons/typescript.svg" title="TypeScript" />
       <img src="icons/solidity.svg" title="Solidity" />
@@ -337,43 +375,42 @@
   </small>
 
   <p>
-    NFT auction platform where bids are placed on-chain and the backend turns chain logs into read models.
+    On-chain NFT auction platform that projects Ethereum event logs into low-latency read models.
     Solidity contracts (ERC-721 + English auction) on Hardhat, a NestJS backend over PostgreSQL, Kafka, and Redis,
-    and a React SPA with wagmi wallet integration and sign-in-with-Ethereum (EIP-4361).
+    and a React SPA with wagmi wallet flows and Sign-In with Ethereum (EIP-4361).
   </p>
 
   <ul>
     <li>
-      Chain-indexing pipeline with 5-block confirmation depth and reorg detection — a (block number, hash) cursor
-      rewinds automatically on mismatch. <small>At-least-once delivery into Kafka with idempotent consumers; read
-        models fully reprojectable from chain logs.</small>
+      Reorg-aware chain indexer with 5-block confirmation depth — a <code>(block number, hash)</code> cursor rewinds
+      automatically on fork mismatch. <small>At-least-once Kafka delivery with idempotent consumers; read models fully
+        replayable from chain logs.</small>
     </li>
     <li>
-      API-originated writes go through a transactional outbox: state and events commit atomically in Postgres before
-      relay to Kafka.
+      Transactional outbox for API-originated writes: state changes and domain events commit atomically in Postgres
+      before relay to Kafka.
     </li>
     <li>
-      Read models exposed over REST, GraphQL with keyset pagination, and live WebSocket subscriptions.
-      <small>Redis caching invalidated by projections; Redis pub/sub fan-out for live auction updates.</small>
+      Read models served over REST, GraphQL with keyset pagination, and live WebSocket subscriptions.
+      <small>Projection-driven Redis cache invalidation and pub/sub fan-out for live bid updates.</small>
     </li>
     <li>
-      Types flow from the database to the UI: Kysely types generated from migrations, Zod event contracts enforced at
-      produce & consume time — schema drift becomes a compile error.
+      End-to-end type safety from DB to UI: Kysely types generated from migrations and Zod event schemas enforced on
+      both producer and consumer — turning schema drift into a compile error.
     </li>
     <li>
-      E2E suite covering the mint-to-settlement flow. <small>CI with linting, type checks & schema-drift detection;
-        Prometheus metrics including indexer-lag gauges.</small>
+      Full mint-to-settlement E2E suite. <small>CI with linting, type checks, and schema-drift gates; Prometheus
+        metrics including indexer-lag gauges.</small>
     </li>
   </ul>
 
   <h3>Education</h3>
 
-  <h4>M.S. in Computer Science&mdash;Ural State University,
-    2009&ndash;2011</h4>
-  <p class="hug">Graduate-level computer science on top of a mathematics foundation.</p>
+  <h4>M.S. in Computer Science — Ural State University, 2009–2011</h4>
+  <p class="hug">Graduate-level computer science built on a mathematics foundation.</p>
 
-  <h4>B.S. in Mathematics&mdash;Ural State University, 2005&ndash;2009</h4>
-  <p class="hug">Studied pure mathematics, physics, and computer science.</p>
+  <h4>B.S. in Mathematics — Ural State University, 2005–2009</h4>
+  <p class="hug">Pure mathematics, physics, and computer science.</p>
 
 </body>
 
